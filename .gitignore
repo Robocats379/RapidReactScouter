@@ -1,5 +1,5 @@
 
 .idea/
-app/static/
+app/static/admin
 
 *.pyc
