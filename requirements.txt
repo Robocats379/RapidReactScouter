@@ -1,0 +1,13 @@
+celery==5.1.1
+django==3.1.6
+django-cors-headers==3.7.0
+django-crispy-forms==1.11.2
+djangorestframework==3.12.2
+drf-nested-routers==0.93.3
+factory-boy==3.2.0
+flake8==3.8.4
+logdna==1.18.0
+psycopg2==2.8.6
+redis==3.5.3
+twilio==6.59.0
+git+https://github.com/TBA-API/tba-api-client-python.git#egg=tba-api-v3client
