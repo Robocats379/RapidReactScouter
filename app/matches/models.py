@@ -86,5 +86,5 @@ class ScoutedMatch(models.Model):
     end_climb_traversal = models.BooleanField()
     end_points_scored = models.IntegerField()
 
-    notes = models.TextField()
+    notes = models.TextField(blank=True, default="")
 
