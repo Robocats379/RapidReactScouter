@@ -62,7 +62,8 @@ class ScoutedMatch(models.Model):
     auto_does_cross_scoring_line = models.BooleanField()
     auto_does_shoot = models.BooleanField()
     auto_does_score_cargo = models.BooleanField()
-    auto_cargo_scored = models.IntegerField(default=0)
+    auto_cargo_scored_high = models.IntegerField(default=0)
+    auto_cargo_scored_low = models.IntegerField(default=0)
 
     #Teleop
     teleop_where_get_cargo = models.CharField(max_length=255, choices=CARGO_PICKUP_LOCATION_CHOICES)
