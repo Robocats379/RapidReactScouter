@@ -10,9 +10,11 @@
                            class="table table-bordered table-striped"
                            width="100%">
                         <thead>
-                        <th>Team Number</th>
-                        <th>Team Name</th>
-                        <th>Teleop Accuracy %</th>
+                            <th>Team Number</th>
+                            <th>Team Name</th>
+                            <th>Teleop Accuracy %</th>
+                            <th>Climb %</th>
+                            <th>Traversal %</th>
                         </thead>
                         <tbody>
                         {% for team in teams %}
@@ -20,6 +22,8 @@
                                 <td>{{ team.team_number }}</td>
                                 <td>{{ team.nickname }}</td>
                                 <td>{{ team.accuracy }}</td>
+                                <td>{{ team.successful_climb_percentage }}</td>
+                                <td>{{ team.traversal_percentage }}</td>
                             </tr>
                         {% endfor %}
                         </tbody>
@@ -34,8 +38,10 @@
 $(document).ready( function () {
     $('#teamTable').DataTable({
         "scrollX": true,
-        "scrollY": "100%",
-        "paging": false
+        "scrollY": "600px",
+        "paging": false,
+        fixedHeader: true,
+        fixedColumns: true
     });
 } );
 </script>

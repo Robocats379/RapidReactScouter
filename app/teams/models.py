@@ -44,6 +44,7 @@ class Team(models.Model):
 
 
     failed_climb_count = models.IntegerField(default=0, blank=True)
+    climb_count = models.IntegerField(default=0, blank=True)
     end_points_scored_count = models.IntegerField(default=0, blank=True)
     first_rung_count = models.IntegerField(default=0, blank=True)
     second_rung_count = models.IntegerField(default=0, blank=True)
@@ -82,3 +83,15 @@ class Team(models.Model):
         if (self.teleop_attempted_shot_count + self.teleop_missed_shot_count) == 0:
             return f"N/A"
         return f"{round(self.teleop_attempted_shot_count / (self.teleop_attempted_shot_count + self.teleop_missed_shot_count) * 100,2)}%"
+
+    @property
+    def successful_climb_percentage(self):
+        if (self.total_match_count) == 0:
+            return f"N/A"
+        return f"{round((self.climb_count / (self.total_match_count)) * 100, 2)}%"
+
+    @property
+    def traversal_percentage(self):
+        if (self.total_match_count) == 0:
+            return f"N/A"
+        return f"{round((self.traversal_count / (self.total_match_count)) * 100, 2)}%"

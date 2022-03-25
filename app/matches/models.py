@@ -99,6 +99,8 @@ class ScoutedMatch(models.Model):
         team.zero_ball_start_count = 0
         team.teleop_attempted_shot_count = 0
         team.teleop_missed_shot_count = 0
+        team.climb_count = 0
+        team.traversal_count = 0
 
 
         for match in matches:
@@ -110,6 +112,10 @@ class ScoutedMatch(models.Model):
                 team.zero_ball_start_count += 1
             team.teleop_attempted_shot_count += match.teleop_attempted_shots
             team.teleop_missed_shot_count += match.teleop_missed_shots
+            if match.end_does_climb == "YES":
+                team.climb_count += 1
+            if match.end_climb_traversal:
+                team.traversal_count += 1
         team.save()
 
 
