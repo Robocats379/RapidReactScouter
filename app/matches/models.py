@@ -88,3 +88,29 @@ class ScoutedMatch(models.Model):
 
     notes = models.TextField(blank=True, default="")
 
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        team = self.team
+        matches = ScoutedMatch.objects.filter(team=self.team)
+        team.total_match_count = matches.count()
+
+        team.participation_count = 0
+        team.one_ball_start_count = 0
+        team.zero_ball_start_count = 0
+        team.teleop_attempted_shot_count = 0
+        team.teleop_missed_shot_count = 0
+
+
+        for match in matches:
+            if match.did_participate:
+                team.participation_count += 1
+            if match.auto_cargo_start_count == 1:
+                team.one_ball_start_count += 1
+            if match.auto_cargo_start_count == 0:
+                team.zero_ball_start_count += 1
+            team.teleop_attempted_shot_count += match.teleop_attempted_shots
+            team.teleop_missed_shot_count += match.teleop_missed_shots
+        team.save()
+
+
+

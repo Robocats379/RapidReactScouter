@@ -18,6 +18,43 @@ class Team(models.Model):
     rookie_year = models.IntegerField(default=None, null=True, blank=True)
     state = models.CharField(max_length=255, default="", blank=True)
 
+    total_match_count = models.IntegerField(default=0, blank=True)
+    participation_count = models.IntegerField(default=0, blank=True)
+
+    one_ball_start_count = models.IntegerField(default=0, blank=True)
+    zero_ball_start_count = models.IntegerField(default=0, blank=True)
+    crossed_scoring_line_count = models.IntegerField(default=0, blank=True)
+    auto_shoot_count = models.IntegerField(default=0, blank=True)
+    auto_score_count = models.IntegerField(default=0, blank=True)
+    auto_high_cargo_count = models.IntegerField(default=0, blank=True)
+    auto_low_cargo_count = models.IntegerField(default=0, blank=True)
+
+    teleop_pickup_human_player_count = models.IntegerField(default=0, blank=True)
+    teleop_pickup_floor_count = models.IntegerField(default=0, blank=True)
+    teleop_effective_floor_pickup_count = models.IntegerField(default=0, blank=True)
+    teleop_scores_cargo_count = models.IntegerField(default=0, blank=True)
+    teleop_attempted_shot_count = models.IntegerField(default=0, blank=True)
+    teleop_missed_shot_count = models.IntegerField(default=0, blank=True)
+    teleop_defense_count = models.IntegerField(default=0, blank=True)
+    teleop_defense_effective_count = models.IntegerField(default=0, blank=True)
+    teleop_against_hub_count = models.IntegerField(default=0, blank=True)
+    teleop_launch_pad_count = models.IntegerField(default=0, blank=True)
+    teleop_tarmac_count = models.IntegerField(default=0, blank=True)
+    teleop_carpet_count = models.IntegerField(default=0, blank=True)
+
+
+    failed_climb_count = models.IntegerField(default=0, blank=True)
+    end_points_scored_count = models.IntegerField(default=0, blank=True)
+    first_rung_count = models.IntegerField(default=0, blank=True)
+    second_rung_count = models.IntegerField(default=0, blank=True)
+    traversal_count = models.IntegerField(default=0, blank=True)
+
+
+
+
+
+
+
     class Meta:
         ordering = ('team_number',)
 
@@ -39,3 +76,9 @@ class Team(models.Model):
 
     def __str__(self):
         return f"Team {self.team_number}: {self.nickname}"
+
+    @property
+    def accuracy(self):
+        if (self.teleop_attempted_shot_count + self.teleop_missed_shot_count) == 0:
+            return f"N/A"
+        return f"{round(self.teleop_attempted_shot_count / (self.teleop_attempted_shot_count + self.teleop_missed_shot_count) * 100,2)}%"
