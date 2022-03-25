@@ -18,6 +18,9 @@ class Team(models.Model):
     rookie_year = models.IntegerField(default=None, null=True, blank=True)
     state = models.CharField(max_length=255, default="", blank=True)
 
+    class Meta:
+        ordering = ('team_number',)
+
 
     def save(self, *args, **kwargs):
         with tbaapiv3client.ApiClient(configuration) as api_client:
