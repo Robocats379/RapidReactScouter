@@ -101,7 +101,8 @@ class ScoutedMatch(models.Model):
         team.teleop_missed_shot_count = 0
         team.climb_count = 0
         team.traversal_count = 0
-        team
+        team.auto_low_cargo_count = 0
+        team.auto_high_cargo_count = 0
 
 
         for match in matches:
@@ -117,6 +118,8 @@ class ScoutedMatch(models.Model):
                 team.climb_count += 1
             if match.end_climb_traversal:
                 team.traversal_count += 1
+            team.auto_low_cargo_count += match.auto_cargo_scored_low
+            team.auto_high_cargo_count += match.auto_cargo_scored_high
         team.save()
 
 

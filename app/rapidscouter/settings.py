@@ -80,10 +80,10 @@ WSGI_APPLICATION = 'rapidscouter.wsgi.application'
 DATABASES = {
     'default': {
        'ENGINE': 'django.db.backends.postgresql',
-        'HOST': os.environ.get('DB_HOST'),
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_PASS')
+        'HOST': 'ec2-52-3-60-53.compute-1.amazonaws.com',
+        'NAME': 'd8vo45bdv985lp',
+        'USER': 'bbvdnzcdcyvpkq',
+        'PASSWORD': '62e13c9ee40153a57d5a5a901b1385aa1b0037bf79daa5fd23301e41348acb46'
     }
 }
 
