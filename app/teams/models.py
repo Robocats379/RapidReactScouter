@@ -95,3 +95,15 @@ class Team(models.Model):
         if (self.total_match_count) == 0:
             return f"N/A"
         return f"{round((self.traversal_count / (self.total_match_count)) * 100, 2)}%"
+
+    @property
+    def average_upper_auto_goals(self):
+        if (self.total_match_count) == 0:
+            return f"N/A"
+        return f"{round((self.auto_high_cargo_count / (self.total_match_count)) * 100, 2)}%"
+
+    @property
+    def average_lower_auto_goals(self):
+        if (self.total_match_count) == 0:
+            return f"N/A"
+        return f"{round((self.auto_low_cargo_count / (self.total_match_count)) * 100, 2)}%"

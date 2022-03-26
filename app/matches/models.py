@@ -101,6 +101,7 @@ class ScoutedMatch(models.Model):
         team.teleop_missed_shot_count = 0
         team.climb_count = 0
         team.traversal_count = 0
+        team
 
 
         for match in matches:
