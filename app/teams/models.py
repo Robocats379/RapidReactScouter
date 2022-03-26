@@ -82,7 +82,7 @@ class Team(models.Model):
     def accuracy(self):
         if (self.teleop_attempted_shot_count + self.teleop_missed_shot_count) == 0:
             return f"N/A"
-        return f"{round(self.teleop_attempted_shot_count / (self.teleop_attempted_shot_count + self.teleop_missed_shot_count) * 100,2)}%"
+        return f"{round(self.teleop_attempted_shot_count / (self.teleop_attempted_shot_count + self.teleop_missed_shot_count) * 100,2)}% ({self.teleop_attempted_shot_count} out of {self.teleop_attempted_shot_count + self.teleop_missed_shot_count})"
 
     @property
     def successful_climb_percentage(self):
