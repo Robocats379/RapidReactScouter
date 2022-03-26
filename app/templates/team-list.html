@@ -3,6 +3,21 @@
 {% block content %}
 <div class="container-fluid mt-4">
     <div class="row">
+        <div class="col-12 mb-3">
+            <a class="btn btn-block btn-success w-100"
+                {% if page_name == 'Pick List' %}
+                    href="/"
+               {% else %}
+                    href="/picks"
+               {% endif %}
+            >
+                {% if page_name == 'Pick List' %}
+                   Go To All Teams
+               {% else %}
+                    Go To Pick List
+               {% endif %}
+            </a>
+        </div>
         <div class="col-12">
             <div class="card shadow-lg">
                 <div class="card-body">
