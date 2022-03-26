@@ -19,5 +19,6 @@ import teams.views as team_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', team_views.team_list)
+    path('', team_views.team_list),
+    path('team/<int:pk>/', team_views.team_detail)
 ]

@@ -21,7 +21,7 @@
                         </thead>
                         <tbody>
                         {% for team in teams %}
-                            <tr>
+                            <tr onclick="window.location='/team/{{ team.team_number }}'">
                                 <td>{{ team.team_number }}</td>
                                 <td>{{ team.nickname }}</td>
                                 <td>{{ team.total_match_count }}</td>
